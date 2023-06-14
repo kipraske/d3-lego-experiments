@@ -6,12 +6,13 @@ const db = connectLegoDB();
 const app = express();
 app.use(express.static('static'))
 
-app.get('/data', (req, res) => {
+app.get('/data/:year', (req, res) => {
     db.all('SELECT * FROM colors LIMIT 10', (err, rows) => {
         if (err) {
             throw err;
         }
 
+        // console.log(req.params.year);
         res.json(rows);
     });
 })
