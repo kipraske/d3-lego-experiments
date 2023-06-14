@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Kip Raske",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
 }
