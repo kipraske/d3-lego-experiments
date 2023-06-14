@@ -1,34 +1,18 @@
-import http from 'http';
+import express from 'express';
 import fs from 'fs';
-import connectDB from './db.js';
+import connectLegoDB from './db.js';
 
-const port = 3000
-const db = connectDB();
+const db = connectLegoDB();
+const app = express();
+app.use(express.static('static'))
 
-const server = http.createServer(function(req,res) {
-    res.writeHead(200, {'Content-Type':'text/html'})
-    fs.readFile('index.html', function(error, data){
-        if(error){
-            res.writeHead(404)
-            res.write('Error: File not found')
-        }else{
-            res.write(data)
-        }
-        res.end()
-    })
-
+app.get('/data', (req, res) => {
+    res.send('Test Route!')
 })
 
-server.listen(port, function(error) {
-    if (error) {
-        console.log('An error has occured', error)
-
-    } else {
-        console.log('Server is running on port ' + port)
-    }
-})
-
-
+app.listen(3000, () => {
+  console.log('Server running at http://localhost:3000/');
+});
 // TESTING area
 
 // db.serialize( () => {
