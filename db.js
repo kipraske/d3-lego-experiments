@@ -5,7 +5,7 @@ const filepath = "./lego-database.db";
 export default function createDbConnection() {
   const db = new sqlite3.Database(filepath, (error) => {
     if (error) {
-      return console.error(error.message);
+      throw error;
     }
   });
   console.log("Connection with SQLite has been established");
