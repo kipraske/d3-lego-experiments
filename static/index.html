@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="script.js" type="module"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Lego Block Color By Year</h1>
-    <section class="lego-chart-section">SVG goes here</section>
+    <h1>Gates Foundation Educational Spending</h1>
+    <div id="toolbar">
+      <a href="#" id="all" class="button active">All Grants</a>
+      <a href="#" id="year" class="button">Grants By Year</a>
+    </div>
+    <section id="vis" class="lego-chart-section">SVG goes here</section>
+
 
     <!-- Something like a slider would be a better element for this, but that can come later -->
     <label for="year-input">Select Year (1950 - 2017):</label>
@@ -15,5 +20,13 @@
 
     <h2> TEST AREA </h2>
     <section class="test-area">Testing Data....</section>
+
+    <script src="bubble-chart-scripts/d3.v7.js"></script>
+    <script src="bubble-chart-scripts/tooltip.js"></script>
+    <script src="bubble-chart-scripts/bubble_chart.js"></script>
+
+    <script src="script.js"></script>
+
+
 </body>
 </html>
