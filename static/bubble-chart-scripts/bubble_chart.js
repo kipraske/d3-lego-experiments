@@ -411,6 +411,7 @@ yearButtonEl.addEventListener('click', (event) => {
         // TODO - here is where we do the 2way binding for the d3 data
         // For now manual one way binding
 
+        document.getElementById('vis').querySelector('svg')?.remove();
         myBubbleChart('#vis', data);
 
         // TODO - TEST section to see if we have this working
