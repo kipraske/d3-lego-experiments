@@ -9,7 +9,7 @@ app.use(express.static('static'))
 app.get('/data/:year', (req, res) => {
 
     let query = `
-        SELECT  sets.year, colors.rgb, SUM(inventory_parts.quantity) AS quantity
+        SELECT  sets.year, colors.id AS color_id, colors.rgb, SUM(inventory_parts.quantity) AS quantity
         FROM sets
         INNER JOIN inventories ON inventories.set_num = sets.set_num
         INNER JOIN  inventory_parts ON inventory_parts.inventory_id = inventories.id
