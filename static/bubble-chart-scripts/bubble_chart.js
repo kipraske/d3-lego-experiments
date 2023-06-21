@@ -7,6 +7,8 @@
  *
  */
 
+// Existing stuff I'm modifying
+
 function bubbleChart() {
   // Constants for sizing
   var width = 940;
@@ -378,8 +380,31 @@ function addCommas(nStr) {
   return x1 + x2;
 }
 
-// Load the data.
-d3.csv('data/gates_money.csv', display);
-
 // setup the buttons.
 setupButtons();
+
+// --------
+// MY stuff
+// --------
+
+let yearInputEl = document.getElementById('year-input');
+let yearButtonEl = document.getElementById('year-submit');
+let svgSectionEl = document.querySelector('.lego-chart-section');
+
+yearButtonEl.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    // Maybe sanitize lol.
+    fetch( '/data/' + yearInputEl.value )
+    .then( (res) => res.json() )
+    .then((data) => {
+        // TODO - here is where we do the 2way binding for the d3 data
+        // For now manual one way binding
+
+        myBubbleChart('#vis', data);
+
+        // TODO - TEST section to see if we have this working
+        let testAreaEl = document.querySelector('.test-area');
+        testAreaEl.innerHTML = JSON.stringify(data);
+    });
+});
