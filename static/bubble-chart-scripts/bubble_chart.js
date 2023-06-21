@@ -126,6 +126,7 @@ function bubbleChart() {
         radius: radiusScale(+d.quantity),
         value: +d.quantity,
         colorHex: d.rgb,
+        year: d.year,
         x: Math.random() * 900,
         y: Math.random() * 800
       };
@@ -281,21 +282,21 @@ function bubbleChart() {
    * Function called on mouseover to display the
    * details of a bubble in the tooltip.
    */
-  function showDetail(d) {
+  function showDetail(event, d) {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
 
-    var content = '<span class="name">Title: </span><span class="value">' +
-                  d.name +
-                  '</span><br/>' +
-                  '<span class="name">Amount: </span><span class="value">$' +
-                  addCommas(d.value) +
-                  '</span><br/>' +
-                  '<span class="name">Year: </span><span class="value">' +
+    var content = '<span class="name">Year: </span><span class="value">' +
                   d.year +
+                  '</span><br/>' +
+                  '<span class="name">Color: </span><span class="value">' +
+                  d.colorHex +
+                  '</span><br/>' +
+                  '<span class="name">Quantity: </span><span class="value">' +
+                  addCommas(d.value) +
                   '</span>';
 
-    tooltip.showTooltip(content, d3.event);
+    tooltip.showTooltip(content, event);
   }
 
   /*
