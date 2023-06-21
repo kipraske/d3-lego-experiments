@@ -110,6 +110,17 @@ function bubbleChart() {
     // working with data.
     var myNodes = rawData.map(function (d) {
 
+      // TODO - check for the old variables
+      // id: d.id,
+      // radius: radiusScale(+d.total_amount),
+      // value: +d.total_amount,
+      // name: d.grant_title,
+      // org: d.organization, (x)
+      // group: d.group,
+      // year: d.start_year,
+      // x: Math.random() * 900,
+      // y: Math.random() * 800
+
       return {
         id: d.color_id,
         radius: radiusScale(+d.quantity),
@@ -162,8 +173,8 @@ function bubbleChart() {
     var bubblesE = bubbles.enter().append('circle')
       .classed('bubble', true)
       .attr('r', 0)
-      .attr('fill', function (d) { return fillColor(d.group); })
-      .attr('stroke', function (d) { return d3.rgb(fillColor(d.group)).darker(); })
+      .attr('fill', function (d) { return `#${d.colorHex}`; })
+      .attr('stroke', function (d) { return d3.rgb(`#${d.colorHex}`).darker(); })
       .attr('stroke-width', 2)
       .on('mouseover', showDetail)
       .on('mouseout', hideDetail);
